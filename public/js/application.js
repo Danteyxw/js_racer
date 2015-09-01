@@ -1,7 +1,24 @@
-$(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
+function movePlayer(player) {
+  return $("#player" + player + "_strip .active").removeClass("active").next().addClass("active");
+}
 
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+function checkVictory(player, where) {
+  if (where.is(":last-child")) {
+    if (confirm("Player " + player + " won, restart?")) {
+      location.reload();
+    }
+  }
+}
+
+$(document).ready(function() {
+
+  $(document).on("keyup", function(event) {
+    if (event.keyCode == 81) { // p
+      checkVictory("1", movePlayer("1"));
+    }
+    else if (event.keyCode == 80) { // q
+      checkVictory("2", movePlayer("2"));
+    }
+  });
+
 });
