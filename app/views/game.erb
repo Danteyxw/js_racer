@@ -21,8 +21,12 @@
   <div class="screen">
     <div class="victory">
       <h2 class="winner"></h2>
-      <button id="rematch">Rematch</button>
-      <button id="return">Return to Menu</button>
+      <form action="/registration" method="post">
+        <input type="hidden" name="player1" value="<%= @player1 %>">
+        <input type="hidden" name="player2" value="<%= @player2 %>">
+        <input type="submit" value="rematch">
+      </form>
+      <a href="/"><button>Return to Menu</button></a>
     </div>
   </div>
 </main>

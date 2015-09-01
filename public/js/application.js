@@ -6,7 +6,7 @@ function checkVictory(player, where) {
   if (where.is(":last-child")) {
     winner = $(".players .player" + player).text();
     $(document).unbind("keyup");
-    $(".winner").append("<span class='player" + player + "'>" + winner + "</span> won!");
+    $(".winner").append("<span class='player" + player + "'>" + winner + "</span><br>won!");
     $.post('/game/win', {game: window.location.href, winner: winner}).done(function(data) {
       $(".screen").show();
     });

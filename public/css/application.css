@@ -66,6 +66,10 @@ main {
   text-align: center;
 }
 
+.winner {
+  color: white;
+}
+
 table {
   width: 598px;
   height: 48px;

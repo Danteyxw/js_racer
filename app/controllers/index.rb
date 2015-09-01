@@ -32,6 +32,6 @@ end
 post '/game/win' do
   @game = Game.find(params[:game].split("/").last)
   @winner = params[:winner]
-  time = (Time.now - session[:time]).to_f
-  @game.update(time: time, winner: @winner)
+  @time = (Time.now - session[:time]).to_f
+  @game.update(done: true, time: @time, winner: @winner)
 end
