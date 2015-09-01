@@ -20,6 +20,24 @@ main {
   height: 498px;
 }
 
+.instructions {
+  margin: 30px auto;
+  text-align: center;
+}
+
+.registration input {
+  margin: 5px auto;
+  display: block;
+}
+
+.player1 {
+  color: #c69;
+}
+
+.player2 {
+  color: #36c;
+}
+
 table {
   width: 598px;
   height: 38px;

@@ -1,20 +1,14 @@
-<header>
-  <h1>JS Racer</h1>
-</header>
-
 <main>
-  <table class="racer_table">
-    <tr id="player1_strip">
-      <td class="active"></td>
-      <% 19.times do %>
-        <td></td>
-      <% end %>
-    </tr>
-    <tr id="player2_strip">
-      <td class="active"></td>
-      <% 19.times do %>
-        <td></td>
-      <% end %>
-    </tr>
-  </table>
+  <div class="instructions">
+    <h2>=[ Instructions ]=</h2>
+    <p>Player 1: press q to move</p>
+    <p>Player 2: press p to move</p>
+    <p>To play the game, enter the name of both players and press Start.</p>
+  </div>
+
+  <form class="registration" action="/registration" method="post">
+    <input class="player1" type="text" name="player1" placeholder="Name of Player 1" required>
+    <input class="player2" type="text" name="player2" placeholder="Name of Player 2" required>
+    <input type="submit" value="Start">
+  </form>
 </main>
