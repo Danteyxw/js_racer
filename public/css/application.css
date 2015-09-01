@@ -59,15 +59,20 @@ main {
 }
 
 .victory {
-  width: 198px;
+  width: 298px;
   height: 198px;
   margin: 205px auto;
   padding: 50px;
   text-align: center;
+  color: white;
 }
 
 .winner {
   color: white;
+}
+
+.results p {
+  text-align: center;
 }
 
 table {

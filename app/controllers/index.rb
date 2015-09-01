@@ -24,6 +24,7 @@ end
 get '/game/:id' do
   @player1 = session[:player1]
   @player2 = session[:player2]
+  @game = params[:id]
 
   session[:time] = Time.now
   erb :game
@@ -33,5 +34,14 @@ post '/game/win' do
   @game = Game.find(params[:game].split("/").last)
   @winner = params[:winner]
   @time = (Time.now - session[:time]).to_f
-  @game.update(done: true, time: @time, winner: @winner)
+  @game.update(done: true, time: @time, winner: Player.find_by(name: @winner).id)
+end
+
+get '/result/:id' do
+  @game = Game.find(params[:id])
+  @winner = Player.find(@game.winner).name
+  @time = @game.time
+  @player1 = @game.players.first.name
+  @player2 = @game.players.last.name
+  erb :result
 end

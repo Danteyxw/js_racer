@@ -1,6 +1,6 @@
 <main>
   <div class="players">
-    <h2 class="player1"><%= @player1 %></h2> VS <h2 class="player2"> <%= @player2 %> </h2>
+    <h2 class="player1"><%= @player1 %></h2> VS <h2 class="player2"><%= @player2 %></h2>
   </div>
 
   <table class="racer_table">
@@ -21,6 +21,8 @@
   <div class="screen">
     <div class="victory">
       <h2 class="winner"></h2>
+      <p>Use This link to view the results anytime: </p>
+      <p>localhost:9393/result/<%= @game %></p>
       <form action="/registration" method="post">
         <input type="hidden" name="player1" value="<%= @player1 %>">
         <input type="hidden" name="player2" value="<%= @player2 %>">
