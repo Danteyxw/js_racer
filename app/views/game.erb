@@ -1,4 +1,8 @@
 <main>
+  <div class="players">
+    <h2 class="player1"><%= @player1 %></h2> VS <h2 class="player2"> <%= @player2 %> </h2>
+  </div>
+
   <table class="racer_table">
     <tr id="player1_strip">
       <td class="active"></td>
@@ -13,4 +17,12 @@
       <% end %>
     </tr>
   </table>
+
+  <div class="screen">
+    <div class="victory">
+      <h2 class="winner"></h2>
+      <button id="rematch">Rematch</button>
+      <button id="return">Return to Menu</button>
+    </div>
+  </div>
 </main>

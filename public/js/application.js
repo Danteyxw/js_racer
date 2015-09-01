@@ -4,21 +4,28 @@ function movePlayer(player) {
 
 function checkVictory(player, where) {
   if (where.is(":last-child")) {
-    if (confirm("Player " + player + " won, restart?")) {
-      location.reload();
-    }
+    winner = $(".players .player" + player).text();
+    $(document).unbind("keyup");
+    $(".winner").append("<span class='player" + player + "'>" + winner + "</span> won!");
+    $.post('/game/win', {game: window.location.href, winner: winner}).done(function(data) {
+      $(".screen").show();
+    });
   }
 }
 
 $(document).ready(function() {
 
   $(document).on("keyup", function(event) {
+    var player;
+
     if (event.keyCode == 81) { // p
-      checkVictory("1", movePlayer("1"));
+      player = "1";
     }
     else if (event.keyCode == 80) { // q
-      checkVictory("2", movePlayer("2"));
+      player = "2";
     }
+    var here = movePlayer(player);
+    checkVictory(player, here);
   });
 
 });

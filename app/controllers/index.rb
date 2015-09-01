@@ -3,10 +3,11 @@ get '/' do
 end
 
 post '/registration' do
-  byebug
+  player1 = Player.find_or_create_by(name: params[:player1].strip)
+  player2 = Player.find_or_create_by(name: params[:player2].strip)
 
-  player1 = Player.find_or_create_by(name: params[:player1])
-  player2 = Player.find_or_create_by(name: params[:player2])
+  session[:player1] = player1.name
+  session[:player2] = player2.name
 
   unless player1.nil? || player2.nil?
     game = Game.new
@@ -21,5 +22,16 @@ post '/registration' do
 end
 
 get '/game/:id' do
+  @player1 = session[:player1]
+  @player2 = session[:player2]
+
+  session[:time] = Time.now
   erb :game
+end
+
+post '/game/win' do
+  @game = Game.find(params[:game].split("/").last)
+  @winner = params[:winner]
+  time = (Time.now - session[:time]).to_f
+  @game.update(time: time, winner: @winner)
 end
